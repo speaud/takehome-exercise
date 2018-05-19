@@ -8,7 +8,8 @@ const
 app.use(morgan('dev')); // log requests to the console
 
 // configure body parser
-app.use([bodyParser.urlencoded({ extended: true }), bodyParser.json()]);
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // set our port
 const port = process.env.PORT || 3001;
@@ -17,13 +18,19 @@ const port = process.env.PORT || 3001;
 const router = express.Router();
 
 // middleware to use for all requests
-router.use((req, res, next) => {
-  next();
-});
+app.use((req, res, next) => {
+	//res.status(404).send("Sorry can't find that!")
+
+  //console.log('everyrequest', req.params.length)
+  next()
+})
 
 // ========== resource declarations ==========
 
-	// Description of the exercise - This endpoint should return a brief description about the project, it may be a static value that is returned.
+	/**
+	 * Description of the exercise
+	 * @returns {...} - Brief description about the project
+	 */	
 	router.get('/', (req, res) => {
 		res.json({ message: 'Description of the exercise' });	
 	});
@@ -39,3 +46,5 @@ app.use('/', router);
 app.listen(port);
 
 console.log(`express API server running on ${port}`);
+
+module.exports = app

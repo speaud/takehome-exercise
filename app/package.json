@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "client": "webpack-dev-server --config ./client/etc/webpack.development.config.js --env.NODE_ENV=development",
-    "server": "nodemon ./server/index.js"
+    "server": "nodemon ./server/index.js",
+    "server-test": "mocha --exit -- ./server/test/"
   },
   "repository": {
     "type": "git",
