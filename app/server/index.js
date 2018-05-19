@@ -1,43 +1,42 @@
-// BASE SETUP
-// =============================================================================
-
-// call the packages we need
-var express    = require('express');
-var bodyParser = require('body-parser');
-var app        = express();
-var morgan     = require('morgan');
+const
+	express = require('express'),
+	bodyParser = require('body-parser'),
+	app = express(),
+	morgan = require('morgan');
 
 // configure app
 app.use(morgan('dev')); // log requests to the console
 
 // configure body parser
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use([bodyParser.urlencoded({ extended: true }), bodyParser.json()]);
 
-var port     = process.env.PORT || 3001; // set our port
-
-// ROUTES FOR OUR API
-// =============================================================================
+// set our port
+const port = process.env.PORT || 3001;
 
 // create our router
-var router = express.Router();
+const router = express.Router();
 
 // middleware to use for all requests
-router.use(function(req, res, next) {
-	// do logging
-	console.log('Something is happening.');
-	next();
+router.use((req, res, next) => {
+  next();
 });
 
-// test route to make sure everything is working (accessed at GET http://localhost:8080/api)
-router.get('/', function(req, res) {
-	res.json({ message: 'test api call edited' });	
-});
+// ========== resource declarations ==========
 
-// REGISTER OUR ROUTES -------------------------------
-app.use('/api', router);
+	// Description of the exercise - This endpoint should return a brief description about the project, it may be a static value that is returned.
+	router.get('/', (req, res) => {
+		res.json({ message: 'Description of the exercise' });	
+	});
 
-// START THE SERVER
-// =============================================================================
+	// List of patients - This endpoint should return a list of patients for consumption of the frontend.
+	router.use('/patients', require('./controllers/patients.ctrl.js'))
+
+// ===========================================
+
+// register routes
+app.use('/', router);
+
+// start the server
 app.listen(port);
-console.log('Magic happens on port ' + port);
+
+console.log(`express API server running on ${port}`);
