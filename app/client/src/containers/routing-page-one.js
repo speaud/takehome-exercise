@@ -1,19 +1,41 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
-export default class RoutingPageOne extends Component {
+import { initializationAction } from '../actions/'
+
+class RoutingPageOne extends Component {
+  constructor(props){
+    super(props);
+  }
+
+  componentDidMount() {
+    if (!this.props.patients.meta.fetched) {
+      this.props.initializationAction()
+    }
+  }
+
   render(){
     return (
       <div className="container">
         <div className="row">
-          RoutingPageOneA<br />
-          RoutingPageOneA<br />
-          RoutingPageOneA<br />
-          RoutingPageOneA<br />
-          <Link to="two">two</Link>
-          <Link to="404">three</Link>
+          content
         </div>
       </div>
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    patients: state.patients
+  };
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    initializationAction
+  },dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RoutingPageOne);

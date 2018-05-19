@@ -4,7 +4,7 @@ const
 
 // List of patients - This endpoint should return a list of patients for consumption of the frontend.
 router.get('/', (req, res) => {
-  res.json({ data: patientsJson })
+  res.json(patientsJson)
 })
 
 router.get('/:name', (req, res) => {
