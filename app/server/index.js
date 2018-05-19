@@ -28,7 +28,6 @@ router.use((req, res, next) => {
 		res.json({ message: 'Description of the exercise' });	
 	});
 
-	// List of patients - This endpoint should return a list of patients for consumption of the frontend.
 	router.use('/patients', require('./controllers/patients.ctrl.js'))
 
 // ===========================================
