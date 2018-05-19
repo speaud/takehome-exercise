@@ -14,4 +14,8 @@ router.get('/:name', (req, res) => {
   //res.json({ matchedPatients: matches.length, matches: matches, totalPatients: patientsJson.length, patients: patientsJson })
 })
 
+/*
+router.get('/:mrn', (req, res) => {})
+*/
+
 module.exports = router
