@@ -19,6 +19,9 @@ export const FSA_META_RECEIVE = {
 };
 
 // Define action type constants
+export const REQUEST_DESCRIPTION = 'REQUEST_DESCRIPTION'
+export const RECEIVE_DESCRIPTION = 'RECEIVE_DESCRIPTION'
+
 export const REQUEST_PATIENTS = 'REQUEST_PATIENTS'
 export const RECEIVE_PATIENTS = 'RECEIVE_PATIENTS'
 

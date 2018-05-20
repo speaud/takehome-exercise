@@ -1,28 +1,44 @@
-import axios from 'axios'
-
-
 import {
+	API,
+
+  REQUEST_DESCRIPTION,
+  RECEIVE_DESCRIPTION,
+
 	REQUEST_PATIENTS,
 	RECEIVE_PATIENTS
 } from '../constants'
 
-
-//axios.defaults.headers.common['Content-Type'] = 'application/x-www-form-urlencoded';
-//axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
-
 export const initializationAction = () => dispatch => {
-	console.log('initializationAction')
   dispatch({
-      type: REQUEST_PATIENTS
-  });
+    type: REQUEST_DESCRIPTION
+  })
 
+	fetch(`${API}`)
+	  .then((response) => {
+	    return response.json();
+	  })
+	  .then((response) => {
+	  	console.log(response)
+		  dispatch({
+		      type: RECEIVE_DESCRIPTION,
+		      payload: response.content
+		  })
+	  })
+  	.catch(error => console.error(error));
 
-	axios.get('/api/patients')
-		.then(function (response) {
+  dispatch({
+    type: REQUEST_PATIENTS
+  })  	 
+
+	fetch(`${API}/patients`)
+	  .then((response) => {
+	    return response.json();
+	  })
+	  .then((response) => {
 		  dispatch({
 		      type: RECEIVE_PATIENTS,
-		      payload: response.data
-		  });			
-		})
-		// todo: error handle
+		      payload: response
+		  })
+	  })
+  	.catch(error => console.error(error));
 };

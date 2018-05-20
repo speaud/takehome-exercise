@@ -4,8 +4,8 @@ const
 	app = express(),
 	morgan = require('morgan');
 
-// configure app
-app.use(morgan('dev')); // log requests to the console
+// log requests to the console
+app.use(morgan('dev'));
 
 // configure body parser
 app.use(bodyParser.json());
@@ -19,6 +19,8 @@ const router = express.Router();
 
 // middleware to use for all requests
 app.use((req, res, next) => {
+	res.header("Access-Control-Allow-Origin", "*")
+	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
 	//res.status(404).send("Sorry can't find that!")
 
   //console.log('everyrequest', req.params.length)
@@ -32,7 +34,7 @@ app.use((req, res, next) => {
 	 * @returns {...} - Brief description about the project
 	 */	
 	router.get('/', (req, res) => {
-		res.json({ message: 'Description of the exercise' });	
+		res.json({'content': '<div>description content from express</div>'});	
 	});
 
 	router.use('/patients', require('./controllers/patients.ctrl.js'))

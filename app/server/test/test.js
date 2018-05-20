@@ -33,7 +33,7 @@ describe('takehome exercise - api smoke test', () => {
 		.get(`/patients/${testPatient.full_name.slice(0, 3)}`)
 		.end((err, res) => {
 	  	res.should.have.status(200)
-	  	chai.expect(res.body).to.not.be.empty
+	  	chai.expect(res.body).to.not.be.empty // note: not recommended implementation however in this case it'll suffice
   		done()
 		})
 	})	

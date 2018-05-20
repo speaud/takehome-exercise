@@ -4,22 +4,34 @@ import { bindActionCreators } from 'redux'
 
 import { initializationAction } from '../actions/'
 
+import Description from '../components/Description'
+import PatientsTable from './PatientsTable'
+
 class RoutingPageOne extends Component {
   constructor(props){
     super(props);
   }
 
   componentDidMount() {
-    if (!this.props.patients.meta.fetched) {
+    if (!this.props.patients.meta.fetched || !this.props.description.meta.fetched) {
       this.props.initializationAction()
     }
   }
 
   render(){
+    const {description, patients} = this.props
+
     return (
       <div className="container">
         <div className="row">
-          content
+
+
+          {description.meta.fetched ?  <Description content={description.content} /> : 'Loading...' }
+
+          
+
+
+          {patients.meta.fetched ? <PatientsTable /> : 'fetching...'}
         </div>
       </div>
     )
@@ -28,6 +40,7 @@ class RoutingPageOne extends Component {
 
 const mapStateToProps = (state) => {
   return {
+    description: state.description,
     patients: state.patients
   };
 }

@@ -34,14 +34,17 @@ module.exports = {
     open: true, // Open the app in the default browser
     port: 3000,
     hot: true, // Required for HotModuleReplacementPlugin
-    /*
-    */
     proxy: {
-      //"/": "http://localhost:3001" // Proxy for the API express server. See ../server/index.js for more information
+      //"/api": "http://localhost:3001" // Proxy for the API express server. See ../server/server.js for more information
+      //"/": "http://localhost:3001"
+      /*
+      // Proxy for the API express server. See ../server/index.js for more information
       "/api": {
         target: "http://localhost:3001",
         pathRewrite: {"^/api" : ""}
-      }    
+      }
+      // NOTE: proxy config not need for this exercise
+      */
     },
     overlay: {
       warnings: true,
