@@ -16,7 +16,7 @@ const actionsStyles = theme => ({
   },
 });
 
-class TablePaginationFooter extends Component {
+class PatientsTableFooter extends Component {
   constructor(props){
     super(props);
 
@@ -69,7 +69,7 @@ class TablePaginationFooter extends Component {
   }
 }
 
-TablePaginationFooter.propTypes = {
+PatientsTableFooter.propTypes = {
   classes: PropTypes.object.isRequired,
   count: PropTypes.number.isRequired,
   onChangePage: PropTypes.func.isRequired,
@@ -78,4 +78,4 @@ TablePaginationFooter.propTypes = {
   theme: PropTypes.object.isRequired,
 };
 
-export default withStyles(actionsStyles, { withTheme: true })(TablePaginationFooter);
+export default withStyles(actionsStyles, { withTheme: true })(PatientsTableFooter);

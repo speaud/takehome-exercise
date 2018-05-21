@@ -1,0 +1,103 @@
+{
+	"info": {
+		"_postman_id": "02b6dcbb-60e8-4a18-a410-9c6dba4ba349",
+		"name": "takehome exercise",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "description content",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{API}}",
+					"host": [
+						"{{API}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "patients",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{API}}/patients",
+					"host": [
+						"{{API}}"
+					],
+					"path": [
+						"patients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "patients - name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{API}}/patients/{{PATIENT_NAME_STR}}",
+					"host": [
+						"{{API}}"
+					],
+					"path": [
+						"patients",
+						"{{PATIENT_NAME_STR}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "patient - mrn",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{API}}/patients/patient/{{PATIENT_MRN}}",
+					"host": [
+						"{{API}}"
+					],
+					"path": [
+						"patients",
+						"patient",
+						"{{PATIENT_MRN}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "ff025ed6-45ef-42f1-b1c5-bd085d258c6f",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "dbeb637b-2d27-4be6-8801-2df2ee23bbea",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

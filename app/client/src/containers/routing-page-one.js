@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import Paper from '@material-ui/core/Paper'
 
 import { initializationAction } from '../actions/'
 
@@ -22,17 +23,9 @@ class RoutingPageOne extends Component {
     const {description, patients} = this.props
 
     return (
-      <div className="container">
-        <div className="row">
-
-
-          {description.meta.fetched ?  <Description content={description.content} /> : 'Loading...' }
-
-          
-
-
-          {patients.meta.fetched ? <PatientsTable /> : 'fetching...'}
-        </div>
+      <div>
+        {description.meta.fetched ?  <Description content={description.content} /> : 'Loading...' }
+        {patients.meta.fetched ? <PatientsTable /> : 'Loading...'}
       </div>
     )
   }

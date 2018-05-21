@@ -16,8 +16,6 @@ import DevTools from './containers/DevTools'
 import ProviderComponent from './components/provider'
 import storeConfig from './store/store.config.js'
 
-console.log("IS_PRODUCTION = " + IS_PRODUCTION, "module.hot = " + JSON.stringify(module.hot))
-
 const
   store = storeConfig(),
   history = syncHistoryWithStore(browserHistory, store),
@@ -26,8 +24,8 @@ const
 // Render the React application to the DOM
 render(
   <AppContainer errorReporter={Redbox}>
-  <MuiThemeProvider>
-    <ProviderComponent store={store} history={history} />
+    <MuiThemeProvider>
+      <ProviderComponent store={store} history={history} />
     </MuiThemeProvider>
   </AppContainer>,
   rootDomElement
@@ -51,8 +49,8 @@ if (module.hot) {
   module.hot.accept('./components/provider', () => {
     render(
       <AppContainer errorReporter={Redbox}>
-      <MuiThemeProvider>
-        <ProviderComponent store={store} history={history} />
+        <MuiThemeProvider>
+          <ProviderComponent store={store} history={history} />
         </MuiThemeProvider>
       </AppContainer>,
       rootDomElement

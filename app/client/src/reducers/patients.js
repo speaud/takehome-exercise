@@ -9,11 +9,7 @@ import {
   REQUEST_PATIENTS_QUERY,
   RECEIVE_PATIENTS_QUERY,
 
-  REQUEST_PATIENTS_QUERY_RESULTS,
-  RECEIVE_PATIENTS_QUERY_RESULTS,
-
-  REQUEST_PATIENT,
-  RECEIVE_PATIENT
+  RECEIVE_PATIENTS_RESET
 } from '../constants/index.js';
 
 const patients = (state = {
@@ -21,8 +17,9 @@ const patients = (state = {
     string: null,
     matches: []
   },
+  masterList: [],
   list: [],
-  selected: null,
+  selected: [],
   meta: FSA_META_DEFAULT
 }, action) => {
   switch (action.type) {
@@ -34,6 +31,15 @@ const patients = (state = {
     }
 
   case RECEIVE_PATIENTS:
+    return {
+      ...state,
+      masterList: action.payload,
+      list: action.payload,
+      meta: FSA_META_RECEIVE
+    }
+
+  case RECEIVE_PATIENTS_RESET:
+  case RECEIVE_PATIENTS_QUERY:
     return {
       ...state,
       list: action.payload,
