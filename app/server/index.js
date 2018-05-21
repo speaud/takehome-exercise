@@ -34,10 +34,7 @@ app.use((req, res, next) => {
 	 * @returns {...} - Brief description about the project
 	 */	
 	router.get('/', (req, res) => {
-		res.json({'content': '<div>\
-			<a href="sd">view demo</a>\
-			<p>see the project readme for more information</p>\
-			</div>'});	
+		res.json({'content': '<div>see the readme for description and demos</div>'});	
 	});
 
 	router.use('/patients', require('./controllers/patients.ctrl.js'))

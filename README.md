@@ -1,3 +1,59 @@
+### Preamble
+I put a timelock on this project so there is some incomplete implementations you'll see within the code base (e.g., single patient view). I commented areas of that sort as well as possible. Nonetheless you should be able to get a general idea of the direction I was headed in. If you have any questions/comments/concerns please feel free to reach out.
+
+Demos
+* Postman API - https://screencast-o-matic.com/watch/cFhrDkbCdH
+* Mocha API test - https://screencast-o-matic.com/watch/cFhrDEbCKn
+* Full working app - https://screencast-o-matic.com/watch/cFhrDsbCKJ
+
+### Getting started
+(after clone, and npm i)
+
+NOTE: commands ran from inside of the app direcotry
+
+Open a terminal and run the server ```cd app/ && npm run server``` - running on :3001
+
+Open a new terminal and run the client ```cd app/ && npm run server``` - running on :3000
+
+Postman collection and environment config exports can be found in ./app/server/postman/. You can import them into Postman and test the express API endpoints through there as well.
+
+NOTE: ctrl + h will toggle dev tools - see ./app/client/src/containers/DevTools.js for more info
+
+### About the bundle
+
+Front End
+* react used as view library
+* redux used for state management
+* material ui used as view support library
+* webpack used as bundler and dev server with live reload
+
+API/backend
+* express used as api layer
+* nodemon used for server instance with live reload
+* mocha/chai used for API smoke test ```npm run server-test``` (make sure port is not hogged by other server instances)
+
+### Features
+**At a minimum:**
+- [x] Instructions on how to use/run your implementation of this exercise.
+- [x] Backend API has an endpoint of `/patients` in any language that you choose.
+- [x] Endpoint: `/patients` with no arguments returns a valid JSON list of patients.
+- [x] Endpoint: `/patients` with the name argument should return a valid list of patients that include that string in their `full_name`
+- [x] Frontend includes a main page that displays the description of the application, along with a method of navigating or viewing a patient list.
+- [x] Frontend view that shows a list of all patients (Showing the id, name, and mrn ) from the backend API.
+- [x] Frontend view that allows the ability to search for a specific string via the Backend API and shows the result.
+
+**Bonus:**
+- [ ] Add a Frontend view and Backend endpoint to view one patient specifically by mrn.
+  - backend endpoint this there
+- [X] Sortability of the patient list.
+- [X] Unit testing of any of the above logic.
+  - API test
+- [X] Anything you could think of that may be valuable in this application.
+  - basic routing
+  - live reload (server and client)
+  - dev tools
+***
+
 # Haystack Informatics take-home exercise
 The purpose of this exercise is to demonstrate your thought process, implementation, and interpretation of a task similar to that which may occur at Haystack Informatics.  There is no right or wrong way to do this exercise, rather, we would like to simply get a sense for your general coding ability and style.  
 
